@@ -17,6 +17,8 @@ SOURCES := $(wildcard $(SRC_DIR)/*.txt)
 
 # TODO 2: set OUTPUTS to the matching paths under $(OUT_DIR), using $(patsubst).
 OUTPUTS := $(patsubst $(SRC_DIR)/%.txt,$(OUT_DIR)/%.txt,$(SOURCES))
+REPORT := $(OUT_DIR)/report.txt
+BUILD_OUTPUTS := $(filter-out $(REPORT),$(OUTPUTS))
 
 # TODO 3: list every action target here so make never mistakes one for a file.
 .PHONY: all check build test clean ci help
@@ -56,7 +58,7 @@ build: $(OUTPUTS)
 #         lowercase letter. A multi-line if needs a backslash on every line
 #         but the last. Print TEST PASSED on success.
 test: build	## Test generated files
-	@if grep -l '[a-z]' $(OUTPUTS) >/dev/null 2>&1; then \
+	@if grep -l '[a-z]' $(BUILD_OUTPUTS) >/dev/null 2>&1; then \
 		echo "TEST FAILED: lowercase characters remain"; \
 		exit 1; \
 	fi
@@ -73,7 +75,7 @@ help: ## Show available targets
 	@grep -E '^[a-zA-Z0-9_-]+:.*##' $(MAKEFILE_LIST) | \
 	awk 'BEGIN {FS = ":.*##"} {printf "  %-10s %s\n", $$1, $$2}'
 
-$(OUT_DIR)/report.txt: $(OUTPUTS)
+$(REPORT): $(BUILD_OUTPUTS)
 	@echo "Generating report..."
 	@{ \
 		echo "Build Report"; \
