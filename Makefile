@@ -83,3 +83,6 @@ $(OUT_DIR)/report.txt: $(OUTPUTS)
 			echo "$$file: $$(wc -l < "$$file") lines"; \
 		done; \
 	} > "$@"
+
+count: build  ## report how many words were built
+	@wc -w $(OUTPUTS) | tail -1
