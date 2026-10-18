@@ -16,15 +16,15 @@ Student Reg Number: 23-NTU-CS-FL-1132
 
 `origin/main` refers to the main branch of the remote repository named `origin`. It can become outdated if someone pushes new changes to GitHub and I haven't fetched those changes yet. It can also be the wrong reference if `origin` points to my own fork instead of the original class repository.
 
-3. What are the three repositories in Task 4, and which one can you write to?
+2. What are the three repositories in Task 4, and which one can you write to?
 
 The three repositories in Task 4 are my fork (`akashafatima610/devops-lab04-upstream`), the original class repository (`rehannsarwar1/devops-lab04-upstream`), and my local clone on my computer. I can push changes to my own fork, while the original class repository is maintained by its owner. My local clone is where I make changes and commit them before pushing.
 
-4. Why is force-pushing with `--force-with-lease` acceptable in Task 4, compared with the Lab 03 warning?
+3. Why is force-pushing with `--force-with-lease` acceptable in Task 4, compared with the Lab 03 warning?
 
 In Task 4, `--force-with-lease` is used after rebasing my branch onto the latest upstream changes. Rebasing changes the commit history, so I may need to update my branch on GitHub using a force push. The `--force-with-lease` option is safer because it checks that the remote branch has not changed unexpectedly before overwriting it. In Lab 03, force-pushing was discouraged because it can overwrite other people's work or shared history.
 
-5. Output of `git remote -v` from the Task 4 clone
+4. Output of `git remote -v` from the Task 4 clone
 
 akasha@DESKTOP-AEM1FL9:~/devops/devops-lab04-upstream$ git remote -v
 
@@ -33,7 +33,7 @@ origin  https://github.com/akashafatima610/devops-lab04-upstream.git (push)
 upstream        https://github.com/rehannsarwar1/devops-lab04-upstream.git (fetch)
 upstream        https://github.com/rehannsarwar1/devops-lab04-upstream.git (push)
 
-6. Team information
+5. Team information
 
 - Team Name: 27-FYP-218
 - Members and Roll Numbers:
